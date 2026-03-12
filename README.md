@@ -25,9 +25,10 @@ npm run build      # production web build
 ## Desktop (Windows EXE)
 
 ```bash
-npm run electron:build   # produces an installer in dist-electron/
+npm run electron:build   # produces a portable .exe in dist-electron/
 ```
 
+The output is a direct runnable executable (no setup/installer required).
 Requires: Node.js ≥ 18, Windows (or cross-compile with Wine on Linux/macOS).
 
 ## Android APK
@@ -46,7 +47,7 @@ Requires: Android SDK (API 22+), Java 21.
 
 | Workflow | Trigger | Artifact |
 |---|---|---|
-| **Build Windows EXE** | push / PR to `main` / tag | `dist-electron/*.exe` |
+| **Build Windows EXE** | push / PR to `main` / tag | `spanish-practice-windows-portable` (`dist-electron/*.exe`) |
 | **Build Android APK** | push / PR to `main` / tag | `app-debug.apk` |
 
 Both workflows also run on `workflow_dispatch` for manual triggering.

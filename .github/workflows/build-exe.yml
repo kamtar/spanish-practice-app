@@ -31,15 +31,15 @@ jobs:
       - name: Build web assets
         run: npm run build
 
-      - name: Build Windows installer (EXE)
-        run: npx electron-builder --win --x64
+      - name: Build Windows portable EXE
+        run: npx electron-builder --win portable --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Windows installer artifact
+      - name: Upload Windows portable artifact
         uses: actions/upload-artifact@v4
         with:
-          name: spanish-practice-windows-installer
+          name: spanish-practice-windows-portable
           path: dist-electron/*.exe
           if-no-files-found: error
           retention-days: 30
