@@ -1,14 +1,15 @@
 .phrase-card__sentence {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: flex-end;
   gap: 0.15em 0.4em;
-  font-size: 1.7rem;
+  font-size: clamp(1.2rem, 3.2vw, 1.7rem);
   font-weight: 500;
   color: var(--text-h);
   margin: 0;
   line-height: 1.6;
   justify-content: center;
+  width: 100%;
 }
 
 .phrase-card__token {

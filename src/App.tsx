@@ -134,9 +134,18 @@ export default function App() {
           </div>
         ) : (
           <div className="app__card">
-            <p className="app__progress">
-              {available.length} card{available.length !== 1 ? "s" : ""} remaining
-            </p>
+            <div className="app__card-top">
+              <p className="app__progress">
+                {available.length} card{available.length !== 1 ? "s" : ""} remaining
+              </p>
+              <button
+                className="app__btn app__btn--ghost app__btn--tiny app__btn--hide-card"
+                onClick={handleExclude}
+                title="Hide this card from future practice"
+              >
+                Hide card
+              </button>
+            </div>
 
             <div className="app__phrase-area">
               <PhraseCard words={currentPhrase.spanish} />
@@ -209,13 +218,6 @@ export default function App() {
                   Next →
                 </button>
               )}
-              <button
-                className="app__btn app__btn--danger"
-                onClick={handleExclude}
-                title="Don't show this card again"
-              >
-                Exclude card
-              </button>
             </div>
 
             {result === "correct" && (
