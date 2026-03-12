@@ -40,7 +40,7 @@ cd android && ./gradlew assembleDebug
 # APK: android/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-Requires: Android SDK (API 22+), Java 17.
+Requires: Android SDK (API 22+), Java 21.
 
 ## GitHub Actions
 
