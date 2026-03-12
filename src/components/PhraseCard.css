@@ -1,0 +1,44 @@
+.phrase-card__sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.15em 0.4em;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--text-h);
+  margin: 0;
+  line-height: 1.6;
+  justify-content: center;
+}
+
+.phrase-card__token {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phrase-card__token--punct {
+  margin-left: -0.35em;
+}
+
+.phrase-card__word-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05em;
+}
+
+.phrase-card__inflected {
+  font-size: 1em;
+}
+
+.phrase-card__base {
+  font-size: 0.55em;
+  color: var(--base-word-color, #8b8b8b);
+  font-style: italic;
+  line-height: 1;
+}
+
+.phrase-card__plain {
+  font-size: 1em;
+}
