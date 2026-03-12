@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# Spanish Practice App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based app for practicing A1-level Spanish. It displays Spanish sentences as flash cards, shows base (infinitive/dictionary) forms of inflected words in smaller grey text, and lets you type the sentence to check your answer.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **130 A1 Spanish phrases** – greetings, numbers, travel, food, family, weather, and more
+- **Base form hints** – inflected verbs and words show their base/infinitive form in a small grey font below
+- **Two practice modes**
+  - *Copy Spanish* – read the Spanish sentence and type it exactly
+  - *Translate to Spanish* – read the English sentence and type the Spanish translation
+- **Correctness checking** – press Enter or click **Check**; see the correct answer on mistakes
+- **Show/hide translation** – toggle the English translation per card
+- **Exclude card** – hide a card permanently (stored in `localStorage`); reset all excluded cards at any time
+- **Dark-mode support** – follows the OS colour scheme
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev        # start development server
+npm run build      # production web build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Desktop (Windows EXE)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run electron:build   # produces an installer in dist-electron/
 ```
+
+Requires: Node.js ≥ 18, Windows (or cross-compile with Wine on Linux/macOS).
+
+## Android APK
+
+```bash
+npm run build
+npm run cap:add:android   # first time only
+npm run cap:sync
+cd android && ./gradlew assembleDebug
+# APK: android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+Requires: Android SDK (API 22+), Java 17.
+
+## GitHub Actions
+
+| Workflow | Trigger | Artifact |
+|---|---|---|
+| **Build Windows EXE** | push / PR to `main` / tag | `dist-electron/*.exe` |
+| **Build Android APK** | push / PR to `main` / tag | `app-debug.apk` |
+
+Both workflows also run on `workflow_dispatch` for manual triggering.
+
+## Tech Stack
+
+- [Vite](https://vite.dev/) + [React](https://react.dev/) + TypeScript
+- [Electron](https://www.electronjs.org/) + [electron-builder](https://www.electron.build/) (desktop)
+- [Capacitor](https://capacitorjs.com/) (Android)
